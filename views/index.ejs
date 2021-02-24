@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<!--Incluindo Header-->
+<%- include('partials/header.ejs') %>
+
+
+    <body>
+        <!--Incluindo Navbar-->
+        <%- include('partials/navbar.ejs') %>
+
+            <div class="container" id="lista-perguntas">
+                <hr>
+                <h1>Perguntas</h1>
+                <hr>
+                <% perguntas.forEach(pergunta=> { %>
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h3>
+                                <%= pergunta.QST_TITLE %>
+                            </h3>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/pergunta/<%= pergunta.QST_ID %>">
+                                <button class="btn btn-primary">Responder</button>
+                            </a>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+
+            <!--Incluindo Scripts JS-->
+            <%- include('partials/footer-scripts.ejs') %>
+    </body>
+
+</html>

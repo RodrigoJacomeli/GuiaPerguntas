@@ -1,0 +1,42 @@
+<!--Incluindo Header-->
+<%- include('partials/header.ejs') %>
+
+    <body>
+        <!--Incluindo Navbar-->
+        <%- include('partials/navbar.ejs') %>
+
+            <div class="container" id="pergunta">
+
+                <h3>
+                    <%= pergunta.QST_TITLE %>
+                </h3>
+                <P>
+                    <%= pergunta.QST_DESCRIPTION %>
+                </P>
+                <hr>
+                <form action="/salvarResposta" method="post">
+                    <label for="Resposta">Resposta:</label>
+                    <textarea name="rps_body" id="rps_body" cols="30" rows="3" class="form-control"
+                        placeholder="Digite sua resposta aqui!"></textarea>
+                    <input type="text" name="qst_id" id="qst_id" value="<%= pergunta.QST_ID %>" hidden>
+                    <button type="submit" class="btn btn-primary mt-3">Salvar Resposta</button>
+                </form>
+
+                <hr>
+                <h3>Respostas</h3>
+                <hr>
+
+                <% respostas.forEach(resposta=> { %>
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <%= resposta.RPS_BODY %>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <!--Incluindo Scripts JS-->
+            <%- include('partials/footer-scripts.ejs') %>
+    </body>
+
+    </html>
